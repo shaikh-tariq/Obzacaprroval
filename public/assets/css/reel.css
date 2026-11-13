@@ -1,0 +1,10 @@
+/* ===== Video / showreel: full-bleed video directly below the trust strip ===== */
+.reel{position:relative;height:100vh;height:100svh;background:var(--night)}
+.reel-stage{position:relative;height:100vh;height:100svh;overflow:hidden}
+.reel-frame{position:absolute;inset:0;background:var(--night)}
+.rs-wrap{position:absolute;inset:0}
+.reel-video{display:block;width:100%;height:100%;object-fit:cover}
+
+@media (max-width:700px){
+  .reel-video{object-position:center}
+}

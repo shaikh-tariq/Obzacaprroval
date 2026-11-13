@@ -1,0 +1,99 @@
+/* =============================================================
+   OBZAC | Shared header + footer (same on every page)
+   Header: fixed to the top, frosted-glass background. It switches to light text
+   automatically over dark sections (site.js samples what is under it).
+   Footer: call to action, page/service/contact/social columns, logo and copyright.
+   Colours and fonts come from base.css.
+   ============================================================= */
+:root{--hd-h:72px;--hd-pad:clamp(16px,3.2vw,48px)}
+
+/* ---------- header ---------- */
+.site-hd{position:fixed;top:0;left:0;right:0;z-index:90;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:20px;
+  min-height:var(--hd-h);padding-block:max(12px,env(safe-area-inset-top,0px)) 12px;
+  padding-left:max(var(--hd-pad),env(safe-area-inset-left,0px));padding-right:max(var(--hd-pad),env(safe-area-inset-right,0px));
+  color:var(--ink);background:rgba(246,242,235,.58);
+  -webkit-backdrop-filter:blur(18px) saturate(160%);backdrop-filter:blur(18px) saturate(160%);
+  border-bottom:1px solid rgba(43,26,10,.08);box-shadow:0 8px 30px rgba(43,26,10,.04);
+  transition:background .35s ease,color .35s ease,border-color .35s ease,padding .3s ease,opacity .6s ease}
+.site-hd.dark{color:var(--cream);background:rgba(30,18,8,.48);border-bottom-color:rgba(246,242,235,.1);box-shadow:0 8px 30px rgba(0,0,0,.12)}
+.site-hd.small{padding-block:max(8px,env(safe-area-inset-top,0px)) 8px}
+.hd-logo{grid-column:2;grid-row:1;justify-self:center;display:flex;height:30px;color:inherit;line-height:0;text-decoration:none}
+/* the logo is three pieces (icon, OB, ZAC + dot) so the homepage intro can fly them into place */
+.lp{display:block;height:100%;transform-origin:0 0;will-change:transform}
+.lp svg{display:block;height:100%;width:auto;overflow:visible}
+.lp-m svg{aspect-ratio:65/64}.lp-ob svg{aspect-ratio:77/64}.lp-zac svg{aspect-ratio:111/64}
+.hd-nav{grid-column:1;grid-row:1;justify-self:start;display:flex;align-items:center;gap:clamp(18px,2.4vw,40px);white-space:nowrap}
+.hd-nav a{position:relative;color:inherit;text-decoration:none;font:500 15px/1 var(--body);padding-block:10px}
+.hd-nav a::after{content:"";position:absolute;left:0;right:0;bottom:3px;height:2px;border-radius:2px;background:var(--vermilion);transform:scaleX(0);transform-origin:left;transition:transform .3s ease}
+.hd-nav a:hover::after,.hd-nav a[aria-current="page"]::after{transform:scaleX(1)}
+.hd-nav a[aria-current="page"]{color:var(--vermilion)}
+.hd-cta{grid-column:3;grid-row:1;justify-self:end;border-radius:8px;padding:13px 20px;font:600 15px/1 var(--display);white-space:nowrap}
+.site-hd a:focus-visible{outline:2px solid var(--gold);outline-offset:4px;border-radius:4px}
+.hd-menu-toggle,.hd-menu-backdrop,.hd-mobile-nav{display:none}
+
+/* homepage intro: only the OB and ZAC pieces show (they fly in from the middle of the screen);
+   the bar, links, button and icon join them as they lock into place */
+html.hd-intro:not(.hero-fallback) .site-hd,
+html:has(.hero:not(.is-ready)):not(.hero-fallback) .site-hd{background:transparent;border-bottom-color:transparent;box-shadow:none;-webkit-backdrop-filter:none;backdrop-filter:none;pointer-events:none}
+.hd-nav,.hd-cta,.hd-menu-toggle{transition:opacity .7s ease}
+.lp-m{transition:opacity .5s ease,transform .7s cubic-bezier(.34,1.56,.64,1)}
+html.hd-intro:not(.hero-fallback) .hd-nav,
+html.hd-intro:not(.hero-fallback) .hd-cta,
+html.hd-intro:not(.hero-fallback) .hd-menu-toggle,
+html:has(.hero:not(.is-ready)):not(.hero-fallback) .hd-nav,
+html:has(.hero:not(.is-ready)):not(.hero-fallback) .hd-cta,
+html:has(.hero:not(.is-ready)):not(.hero-fallback) .hd-menu-toggle{opacity:0;pointer-events:none}
+html.hd-intro:not(.hero-fallback) .lp-m,
+html:has(.hero:not(.is-ready)):not(.hero-fallback) .lp-m{opacity:0;transform:scale(.4) rotate(-90deg)}
+html.hd-intro:not(.hero-fallback) .site-hd .lp-ob,
+html.hd-intro:not(.hero-fallback) .site-hd .lp-zac,
+html:has(.hero:not(.is-ready)):not(.hero-fallback) .site-hd .lp-ob,
+html:has(.hero:not(.is-ready)):not(.hero-fallback) .site-hd .lp-zac{opacity:0}
+.lp.lp-m{transform-origin:50% 50%}
+
+/* phones and small tablets: replace the desktop links with an expandable menu */
+@media (max-width:820px){
+  :root{--hd-h:64px}
+  .site-hd{grid-template-columns:1fr auto 1fr;grid-template-rows:1fr;row-gap:0;min-height:var(--hd-h);padding-block:max(8px,env(safe-area-inset-top,0px))}
+  .hd-logo{height:24px}
+  .hd-nav,.hd-cta{display:none}
+  .hd-menu-toggle{position:fixed;top:max(8px,env(safe-area-inset-top,0px));right:max(16px,env(safe-area-inset-right,0px));z-index:93;width:44px;height:44px;padding:11px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;border:0;border-radius:8px;background:var(--cream);color:var(--ink);cursor:pointer}
+  .hd-menu-toggle:focus-visible{outline:2px solid var(--vermilion);outline-offset:2px}
+  .hd-menu-toggle span{display:block;width:20px;height:2px;border-radius:2px;background:currentColor;transition:transform .2s ease,opacity .2s ease}
+  .hd-menu-toggle[aria-expanded="true"] span:first-child{transform:translateY(7px) rotate(45deg)}
+  .hd-menu-toggle[aria-expanded="true"] span:nth-child(2){opacity:0}
+  .hd-menu-toggle[aria-expanded="true"] span:last-child{transform:translateY(-7px) rotate(-45deg)}
+  .hd-menu-backdrop{position:fixed;inset:var(--hd-h) 0 0;z-index:88;display:block;width:100%;height:calc(100% - var(--hd-h));padding:0;border:0;background:rgba(30,18,8,.28)}
+  .hd-mobile-nav{position:fixed;top:var(--hd-h);left:0;right:0;z-index:89;display:grid;gap:4px;padding:12px max(20px,env(safe-area-inset-left,0px)) max(20px,env(safe-area-inset-bottom,0px));border-bottom:1px solid rgba(43,26,10,.12);background:var(--cream);color:var(--ink);box-shadow:0 18px 30px rgba(43,26,10,.12)}
+  .hd-mobile-nav a{display:flex;align-items:center;min-height:48px;padding:0 12px;border-radius:6px;color:inherit;text-decoration:none;font:600 17px/1.2 var(--display)}
+  .hd-mobile-nav a[aria-current="page"]{color:var(--vermilion);background:rgba(188,65,43,.08)}
+  .hd-mobile-nav .hd-mobile-cta{justify-content:center;margin-top:8px;background:var(--vermilion);color:var(--cream)}
+}
+
+/* ---------- footer ---------- */
+.site-ft{position:relative;z-index:5;background:var(--night);color:var(--cream)}
+.ft-in{max-width:1300px;margin:0 auto;padding-block:clamp(72px,12vh,130px) 28px;
+  padding-left:max(var(--hd-pad),env(safe-area-inset-left,0px));padding-right:max(var(--hd-pad),env(safe-area-inset-right,0px));display:grid;gap:clamp(48px,8vh,88px)}
+.ft-cta{display:grid;gap:22px;justify-items:start}
+.ft-kick{margin:0;font:500 12px/1.4 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
+.site-ft .ft-cta h2{margin:0;font:700 clamp(40px,7vw,112px)/.95 var(--display);letter-spacing:-.035em;max-width:12ch;text-wrap:balance;color:var(--cream)}
+.ft-cta h2 em{font-style:normal;color:var(--vermilion)}
+.ft-btns{display:flex;flex-wrap:wrap;gap:12px}
+.ft-btns .btn{border-radius:8px}
+.btn.ft-ghost{border:1.5px solid rgba(246,242,235,.4);color:var(--cream);background:transparent}
+.ft-cols{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(24px,4vw,64px);padding-top:clamp(32px,5vh,48px);border-top:1px solid rgba(246,242,235,.14)}
+.ft-in > .ft-cols:first-child{border-top:none;padding-top:0}
+.site-ft .ft-cols h3{margin:0 0 16px;font:500 12px/1.4 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:rgba(246,242,235,.55)}
+.ft-cols ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.ft-cols a,.ft-cols li{color:var(--cream);text-decoration:none;font:400 16px/1.45 var(--body);overflow-wrap:anywhere}
+.ft-cols a:hover{color:var(--vermilion)}
+.ft-note{font-size:12px!important;color:rgba(246,242,235,.45)!important}
+.ft-base{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 28px;padding-top:24px;border-top:1px solid rgba(246,242,235,.14)}
+.ft-logo{color:var(--cream);line-height:0}
+.ft-logo svg{height:28px;width:auto}
+.ft-base p{margin:0;font:400 13px/1.4 var(--body);color:rgba(246,242,235,.6)}
+.ft-top{color:var(--cream);text-decoration:none;font:500 12px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase}
+.ft-top:hover{color:var(--vermilion)}
+.site-ft a:focus-visible{outline:2px solid var(--gold);outline-offset:4px;border-radius:4px}
+@media (max-width:820px){.ft-cols{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:420px){.ft-cols{grid-template-columns:1fr}}

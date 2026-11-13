@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# When you go live, add your sitemap:
+# Sitemap: https://YOUR-DOMAIN/sitemap.xml

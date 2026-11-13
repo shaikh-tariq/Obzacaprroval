@@ -1,0 +1,7 @@
+/* ===== Scroll reveals: headings, cards, stats, words and buttons fade and rise as they enter ===== */
+.js [data-rv]{opacity:0;transform:translateY(36px);transition:opacity .9s cubic-bezier(.2,.7,.2,1) var(--d,0s),transform .9s cubic-bezier(.2,.7,.2,1) var(--d,0s)}
+.js [data-rv].in{opacity:1;transform:none}
+/* small red bar under each section heading that grows once the heading has appeared */
+.t-h::after{content:"";display:block;height:4px;width:0;margin-top:18px;border-radius:2px;background:var(--vermilion);transition:width .9s cubic-bezier(.2,.7,.2,1) .3s}
+.t-h.in::after,.t-h:not([data-rv])::after{width:96px}
+@media (prefers-reduced-motion:reduce){ .t-h::after{transition:none} }

@@ -1,0 +1,31 @@
+/* Brand tokens, resets and page-level helpers (OBZAC brand guide, Sept 2026) */
+
+/* Layout concept: one sticky 900vh stage. A single scroll value drives every scene:
+   line draw > device rises > device fills screen > giant words > ring tunnel with three gates > breakthrough > CTA. */
+:root{
+  --page:#F6F2EB;       /* page colour after the video section */
+  --cream:#F6F2EB;      /* brand background */
+  --vermilion:#BC412B;  /* brand primary, the dot */
+  --brown:#6E4712;      /* brand secondary */
+  --slate:#66717A;      /* brand neutral, used for "noise" */
+  --ink:#2B1A0A;        /* near-black brown for text */
+  --night:#1E1208;      /* dark section ground */
+  --coral:#E5684D;      /* tint of vermilion, tunnel colour shift */
+  --gold:#E8B04A;       /* warm tint, tunnel colour shift */
+  --display:'Space Grotesk',system-ui,sans-serif;
+  --body:'Inter',system-ui,sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,monospace;
+}
+html,body{margin:0}
+body{background:var(--page);color:var(--ink);font-family:var(--body);overflow-x:clip;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+
+.below{display:flex;align-items:center;justify-content:center;padding-inline:16px;font:500 12px/1.4 var(--mono);letter-spacing:.14em;text-transform:uppercase;text-align:center}
+.below{height:40vh;background:var(--night);color:var(--slate)}
+
+/* Shared buttons (used by Services and the story CTA) */
+.btn{pointer-events:auto;display:inline-flex;align-items:center;gap:10px;padding:16px 28px;border-radius:999px;font:600 16px/1 var(--body);text-decoration:none;transition:transform .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.btn.p{background:var(--vermilion);color:var(--cream)}
+.btn.g{border:1.5px solid rgba(246,242,235,.55);color:var(--cream);background:var(--night)}

@@ -1,0 +1,12 @@
+{
+  "name": "OBZAC",
+  "short_name": "OBZAC",
+  "description": "Brand and marketing partner. Better results. Faster.",
+  "start_url": ".",
+  "display": "browser",
+  "background_color": "#F6F2EB",
+  "theme_color": "#F6F2EB",
+  "icons": [
+    { "src": "assets/img/favicon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ]
+}

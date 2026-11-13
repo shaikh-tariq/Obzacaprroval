@@ -1,0 +1,39 @@
+/* OBZAC Services page. Service names, copy and tools come from assets/js/data/services-data.js (OBZAC.services); the text below is placeholder copy: confirm before launch. */
+(function(){
+var $=function(s,c){return [].slice.call((c||document).querySelectorAll(s))},reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+var P=['#BC412B','#F5E9CF','#6E4712','#E8B04A','#E5684D','#2B1A0A'];
+var copy=[
+ ['Social','Social media marketing and management','A content engine that keeps your brand in front of the right people. We plan, shoot, post and report so your audience grows and your community talks back. Every post has a job, and every month has a number.',['Content Strategy','Reels & Short Video','Community Management','Paid Social','Influencer Campaigns','Reporting']],
+ ['SEO','SEO services','Rank for the searches that bring buyers. We fix the technical basics, build content around real demand and earn the links that make Google trust you, then show you what moved.',['Technical SEO','Keyword Strategy','Content Briefs','Link Building','Local SEO','Analytics']],
+ ['Marketplaces','Marketplace management','Win on the marketplaces where your buyers already shop. Listings, ads, pricing and reviews handled as one system so you sell more without hiring a team.',['Listing Optimisation','A+ Content','Marketplace Ads','Catalogue Setup','Pricing & Offers','Account Health']],
+ ['E-commerce','E-commerce marketing','Turn store traffic into repeat revenue. We tie ads, email and on-site conversion together so each rupee works harder and customers come back.',['Performance Ads','Email & SMS','Conversion Rate','Retention','Product Feeds','Dashboards']],
+ ['Websites','Website development','Fast sites built to convert. We design and build pages that load quickly, read clearly and make the next step obvious on any screen.',['Web Design','Web Development','Shopify Builds','CMS Setup','Speed & Accessibility','Analytics Setup']],
+ ['Branding','Branding and communication','A brand that owns a position instead of blending in. Strategy, identity and messaging built so everything you publish sounds and looks like one company.',['Brand Strategy','Logo & Identity','Messaging','Brand Guidelines','Packaging','Campaign Ideas']]];
+var sv=(window.OBZAC&&OBZAC.services)||[];
+function card(i,j){var a=P[(i+j)%5],b=P[(i+j+2)%5],c=P[(i*2+j+1)%6],k=j%3;
+ var s=k==0?'<circle cx="200" cy="250" r="120" fill="'+b+'"/><circle cx="200" cy="250" r="70" fill="'+a+'"/><circle cx="200" cy="250" r="26" fill="'+c+'"/>':
+  k==1?'<rect x="60" y="260" width="60" height="100" rx="8" fill="'+b+'"/><rect x="150" y="200" width="60" height="160" rx="8" fill="'+c+'"/><rect x="240" y="120" width="60" height="240" rx="8" fill="'+b+'"/><path d="M50 250L180 190 270 120 350 60" stroke="'+P[3]+'" stroke-width="12" fill="none" stroke-linecap="round"/>':
+  '<rect x="90" y="90" width="220" height="320" rx="34" fill="'+b+'"/><circle cx="200" cy="190" r="40" fill="'+a+'"/><rect x="130" y="270" width="140" height="14" rx="7" fill="'+c+'"/><rect x="130" y="300" width="90" height="14" rx="7" fill="'+c+'" opacity=".6"/>';
+ return '<div class="card"><svg viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Placeholder artwork"><rect width="400" height="500" fill="'+a+'"/>'+s+'</svg></div>'}
+var idx=$('#idx'),rows=$('#rows');
+idx[0].innerHTML=copy.map(function(c,i){return '<li><a href="#s'+i+'">'+c[0]+'</a></li>'}).join('');
+rows[0].innerHTML=copy.map(function(c,i){
+ var tools=(sv[i]&&sv[i].k)||[];
+ return '<section class="sv" id="s'+i+'" aria-label="'+c[1]+'"><div class="sv-l"><h2>'+c[0]+'</h2><p class="sv-p">'+c[2].split(' ').map(function(w){return '<span class="w">'+w+'</span>'}).join(' ')+'</p><ul class="sv-t">'+c[3].map(function(t){return '<li>'+t+'</li>'}).join('')+'</ul><a class="sv-lm" href="index.html#contact">Learn more</a></div><div class="sv-r"><div class="sv-c">'+card(i,0)+card(i,1)+card(i,2)+'</div><div class="sv-c">'+card(i,3)+card(i,4)+card(i,5)+'</div></div></section>'}).join('');
+/* words light up as each section scrolls through */
+function words(){var vh=innerHeight;$('.sv').forEach(function(s){var ws=$('.w',s),r=s.getBoundingClientRect(),p=Math.max(0,Math.min(1,(-r.top+vh*.1)/(r.height-vh*1.2)));var n=reduce?ws.length:Math.round(p*1.6*ws.length);ws.forEach(function(w,i){w.classList.toggle('on',i<n)});
+ if(!reduce&&innerWidth>820){var cs=$('.sv-c',s);cs[0].style.transform='translateY('+(-p*12)+'vh)';cs[1].style.transform='translateY('+(p*8)+'vh)'}})}
+var t=0;addEventListener('scroll',function(){if(!t){t=1;requestAnimationFrame(function(){t=0;words()})}},{passive:true});addEventListener('resize',words);words();
+/* client quotes: drag or scroll sideways */
+var q=[['They understood our brand fast and the launch results spoke for themselves.','Client name','Role, Brand name'],['Quick, clear and honest about numbers. It felt like an in-house team.','Client name','Role, Brand name'],['Brand and performance finally worked together. We saw the difference in a month.','Client name','Role, Brand name'],['Our marketplace sales doubled and we never had to chase an update.','Client name','Role, Brand name'],['The best creative partner we have worked with. Sharp, fast and kind.','Client name','Role, Brand name']];
+var cc=$('#cc')[0];cc.innerHTML=q.concat(q).map(function(x,i){return '<div class="qc '+(i%2?'c':'r')+'" style="--r:'+[-4,3,-2,4,-3][i%5]+'deg;--y:'+[0,40,-20,30,-10][i%5]+'px"><q>'+x[0]+'</q><small>'+x[1]+'<br>'+x[2]+'</small></div>'}).join('');
+var half=0,x=0,drag=false,sx=0,ox=0;function setX(v){half=cc.scrollWidth/2;x=((v%half)+half)%half;cc.style.transform='translateX('+(-x)+'px)'}
+cc.addEventListener('pointerdown',function(e){drag=true;sx=e.clientX;ox=x;cc.setPointerCapture(e.pointerId);cc.style.cursor='grabbing'});
+cc.addEventListener('pointermove',function(e){if(drag)setX(ox-(e.clientX-sx))});
+['pointerup','pointercancel'].forEach(function(n){cc.addEventListener(n,function(){drag=false;cc.style.cursor=''})});
+if(!reduce)(function f(){if(!drag)setX(x+1.2);requestAnimationFrame(f)})();else setX(0);
+/* FAQ */
+var F=[['Can OBZAC support branding, websites and marketing in one project?','Yes. Strategy, identity, website and marketing run as one connected engagement, so the story stays consistent from the logo to the last ad.'],['How do we know whether to start with branding, a website or marketing?','If your positioning or visuals feel unclear, start with branding. If the brand is strong but the site is not converting, start with the website. If both work, go straight to marketing.'],['Can OBZAC redesign our website if we already have a brand?','Yes. If the brand foundation is sound we build the site around it, and we flag any gaps in messaging or visuals before design starts.'],['What affects the timeline and investment of a project?','Scope, the number of channels or pages, how much content exists and how fast feedback comes back. We quote after a short call.'],['What types of companies are best suited to OBZAC?','D2C brands, startups and enterprises that want growth without a long wait and are ready to work with one senior team.']];
+var fq=$('#faq')[0];fq.innerHTML=F.map(function(f,i){return '<div class="fq'+(i?'':' open')+'"><button type="button" aria-expanded="'+(i?'false':'true')+'" aria-controls="a'+i+'">'+f[0]+'<i><svg viewBox="0 0 14 8" aria-hidden="true"><path d="M1 1l6 6 6-6" fill="none" stroke="#F5E9CF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i></button><div id="a'+i+'" role="region"><p>'+f[1]+'</p></div></div>'}).join('');
+fq.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;var it=b.parentNode,open=!it.classList.contains('open');$('.fq',fq).forEach(function(n){n.classList.remove('open');n.firstChild.setAttribute('aria-expanded','false')});if(open){it.classList.add('open');b.setAttribute('aria-expanded','true')}});
+})();
