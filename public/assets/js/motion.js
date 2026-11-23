@@ -20,7 +20,7 @@
   });
 
   var H = document.getElementById('home-hero'), ht = $('.h-title')[0], hs = $('.h-sub')[0], hb = $('.h-btn')[0], hc = $('.h-peek .sc')[0];
-  var track = $('.proof-track')[0], anim = null, vel = 0, lastY = window.pageYOffset;
+  var tracks = $('.proof-track'), anims = null, vel = 0, lastY = window.pageYOffset;
   var items = [], tick = false, t = null;
 
   /* K: pixels of extra drift per screen-height of distance from the middle of the screen */
@@ -43,7 +43,7 @@
     var y = window.pageYOffset, vh = window.innerHeight, dh = document.documentElement.scrollHeight - vh;
     sp.style.transform = 'scaleX(' + (dh > 0 ? cl(y / dh) : 0) + ')';
 
-    if (H && ht && !document.documentElement.classList.contains('hero-lock')) {
+    if (false && H && ht && !document.documentElement.classList.contains('hero-lock')) { /* hero drift off: the guide line starts at the headline's full stop */
       var hp = cl(y / H.offsetHeight);
       ht.style.translate = '0 ' + (-hp * 70) + 'px';
       if (hs) hs.style.translate = '0 ' + (-hp * 45) + 'px';
@@ -71,8 +71,8 @@
     }
 
     vel = vel * .9 + Math.abs(y - lastY) * .35; lastY = y;
-    if (!anim && track && track.getAnimations) anim = track.getAnimations()[0];
-    if (anim) anim.playbackRate = vel > .05 ? 1 + Math.min(vel / 5, 5) : 1;
+    if (!anims && tracks.length && tracks[0].getAnimations) anims = tracks.map(function (t) { return t.getAnimations()[0]; }).filter(Boolean);
+    if (anims) anims.forEach(function (a) { a.playbackRate = vel > .05 ? 1 + Math.min(vel / 5, 5) : 1; });
     if (vel > .05) { tick = true; requestAnimationFrame(frame); }
   }
   function later() { clearTimeout(t); t = setTimeout(build, 150); }

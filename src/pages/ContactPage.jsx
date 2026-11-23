@@ -86,7 +86,7 @@ export default function ContactPage() {
   </nav>
   {"\n  "}
   <a className="btn p hd-cta" href="#brief">
-    {"Book a call"}
+    {"Get your growth plan"}
   </a>
   {"\n"}
 </header>
@@ -539,9 +539,6 @@ export default function ContactPage() {
           <span aria-hidden="true">
             {"→"}
           </span>
-        </a>
-        <a className="btn ft-ghost" href="https://wa.me/000000000000">
-          {"Message us on WhatsApp"}
         </a>
       </div>
       {"\n    "}

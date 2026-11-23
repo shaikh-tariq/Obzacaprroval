@@ -47,6 +47,7 @@ function resize(){
   hb=H*.62;G.s2=.66*G.h/hb;G.s3=narrow?Math.min(1.12,(W*.9)/(hb*400/600)):1.12;
   hero.style.height=hb+'px';hero.style.width=(hb*400/600)+'px';
   hero.style.marginLeft=(-hb*400/1200)+'px';hero.style.marginTop=(-hb/2)+'px';
+  ftResize();
   buildChart();
 }
 
@@ -71,10 +72,25 @@ for(var i=0;i<NP;i++){pa[i]=Math.random()*6.2832;pr[i]=.2+Math.random()*1.5;pz[i
 var BG=[[0,'#1E1208'],[.44,'#17110C'],[.52,'#1E1208'],[.6,'#2A0F0A'],[.68,'#33190A'],[.76,'#3A230D'],[1,'#3A230D']];
 var PAL=[[.44,'#8A949C','#C9BFA8'],[.52,'#BC412B','#F6F2EB'],[.6,'#E5684D','#E8B04A'],[.68,'#E8B04A','#F6F2EB'],[.76,'#F6F2EB','#E8B04A']];
 
-function idleRings(cx,cy,a,color,t){
-  var maxR=Math.hypot(W,H)*.55;ctx.strokeStyle=color;
-  for(var k=0;k<6;k++){var ph=((t*.1+k/6)%1);ctx.globalAlpha=a*(1-ph)*.6;ctx.lineWidth=2+ph*12;ctx.beginPath();ctx.arc(cx,cy,ph*maxR,0,6.2832);ctx.stroke()}
-  ctx.globalAlpha=1;
+function ringsOn(c,cx,cy,a,color,t,maxR){
+  c.strokeStyle=color;
+  for(var k=0;k<6;k++){var ph=((t*.1+k/6)%1);c.globalAlpha=a*(1-ph)*.6;c.lineWidth=2+ph*12;c.beginPath();c.arc(cx,cy,ph*maxR,0,6.2832);c.stroke()}
+  c.globalAlpha=1;
+}
+function idleRings(cx,cy,a,color,t,reach){ringsOn(ctx,cx,cy,a,color,t,Math.hypot(W,H)*(reach||.55))}
+/* closing pulse: same centre, clock and reach as the stage, drawn on the footer canvas so the rings
+   keep travelling down into the footer and the CTA + footer read as one section */
+var FT_REACH=1.05,ftc=document.getElementById('ftPulse'),fctx=ftc?ftc.getContext('2d'):null,FW=0,FH=0;
+function ftResize(){if(!ftc)return;FW=ftc.clientWidth;FH=ftc.clientHeight;ftc.width=Math.round(FW*DPR);ftc.height=Math.round(FH*DPR)}
+function drawFooterPulse(p,t){
+  if(!fctx)return;
+  var fr=ftc.getBoundingClientRect();
+  if(fr.top>innerHeight||fr.bottom<0)return;
+  if(Math.abs(fr.width-FW)>1||Math.abs(fr.height-FH)>1)ftResize();
+  fctx.setTransform(DPR,0,0,DPR,0,0);fctx.clearRect(0,0,FW,FH);
+  var a=seg(p,.93,.98)*.8;if(a<=0)return;
+  var sr=stage.getBoundingClientRect();
+  ringsOn(fctx,sr.left+sr.width/2-fr.left,sr.top+sr.height/2-fr.top,a,'#BC412B',t,Math.hypot(W,H)*FT_REACH);
 }
 
 function tunnel(p,t,vel,alpha,ccx,ccy){
@@ -141,7 +157,7 @@ function drawCanvas(p,t,vel,e){
     else{var R2=eo(c)*diag*.58;ctx.fillStyle='#1E1208';ctx.beginPath();ctx.arc(W/2,H/2,R2,0,6.2832);ctx.fill();
       ctx.strokeStyle='#F6F2EB';ctx.lineWidth=4+24*(1-c);ctx.beginPath();ctx.arc(W/2,H/2,R2,0,6.2832);ctx.stroke()}
   }
-  if(p>.93)idleRings(W/2,H/2,seg(p,.93,.98)*.8,'#BC412B',t);
+  if(p>.93)idleRings(W/2,H/2,seg(p,.93,.98)*.8,'#BC412B',t,FT_REACH);
 }
 
 /* ---------- shards ---------- */
@@ -311,6 +327,7 @@ function frame(now){
   cur+=(target-cur)*(RM?1:Math.min(1,dt*7));
   var v=(cur-prev)/dt;prev=cur;vsm+=(v-vsm)*Math.min(1,dt*8);
   render(cur,now/1000,vsm);
+  drawFooterPulse(cur,RM?0:now/1000);
   requestAnimationFrame(frame);
 }
 resize();window.addEventListener('resize',resize);

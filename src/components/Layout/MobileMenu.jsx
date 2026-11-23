@@ -67,7 +67,7 @@ export default function MobileMenu() {
               </Link>
             ))}
             <Link className="hd-mobile-cta" to="/contact#brief" onClick={() => setOpen(false)}>
-              Book a call
+              Get your growth plan
             </Link>
           </nav>
         </>

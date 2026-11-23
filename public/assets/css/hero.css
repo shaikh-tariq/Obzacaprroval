@@ -60,3 +60,29 @@ html.hero-lock{overflow:hidden}
 @media (max-width:900px){ .h-nav{left:0;right:0;justify-content:center;top:clamp(70px,9vh,88px);gap:clamp(14px,4.5vw,26px)} .h-nav a{font-size:14px} }
 .hero a:focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:4px}
 @media (max-width:600px){ .h-right{display:none} }
+
+/* ===== 2026-11 homepage refresh: hero is one centred block (the old "growth-led" peek row was removed) ===== */
+.hero{display:flex;align-items:center;justify-content:center;padding:calc(var(--hd-h,72px) + clamp(40px,8vh,96px)) clamp(20px,4vw,56px) clamp(64px,12vh,128px)}
+.h-in{width:100%;max-width:1240px;margin:0 auto}
+.h-title{font-size:clamp(44px,7.8vw,136px);line-height:.96;max-width:12ch;text-wrap:balance}
+.h-dot{margin-left:0}
+.h-sub{margin-top:clamp(24px,4.4vh,48px);color:rgba(43,26,10,.78)}
+.h-sub span{max-width:42ch;text-wrap:balance}
+.h-btn{margin-top:clamp(28px,4.6vh,48px)}
+.h-btn-ic{width:.95em;height:.95em;flex:none;transition:transform .3s ease}
+.h-btn:hover .h-btn-ic{transform:translateY(3px)}
+@media (max-width:820px){
+  .hero{padding-top:calc(var(--hd-h,64px) + 56px);padding-bottom:72px;min-height:88svh}
+  .h-title{font-size:clamp(40px,12vw,76px)}
+  .h-sub{font-size:16px;line-height:1.45}
+}
+
+/* Guide line from the hero full stop down to the services (drawn by assets/js/homeline.js) */
+.hl{position:absolute;left:0;top:0;width:100%;height:100vh;z-index:0;pointer-events:none;overflow:hidden;visibility:hidden}
+.hl path{fill:none;stroke:var(--vermilion);stroke-linecap:round;stroke-linejoin:round}
+/* the line sits behind every section: the sections it crosses are lifted above it with see-through
+   backgrounds (the page colour shows through from the body), so text, logos, buttons and the video cover it */
+.hero,.proof,#services{background:transparent!important}
+.hero,.proof,.reel,#services{position:relative;z-index:1}
+/* the intro's temporary full stop stays hidden once the intro is done (even after the 7s safety fallback) */
+.js .hero.is-ready .w .pd{opacity:0!important}

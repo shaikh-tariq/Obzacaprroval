@@ -79,9 +79,18 @@ export const pageConfig = {
     "assets/js/proof.js",
     "assets/js/trust.js",
     "assets/js/flow.js",
-    "assets/js/motion.js"
+    "assets/js/motion.js",
+    "assets/js/homeline.js"
   ]
 };
+
+function scrollToServices(event) {
+  const target = document.getElementById('services');
+  if (!target) return;
+  event.preventDefault();
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  target.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+}
 
 export default function HomePage() {
   return (
@@ -136,213 +145,87 @@ export default function HomePage() {
   </nav>
   {"\n  "}
   <InternalLink className="btn p hd-cta" href="contact.html#brief">
-    {"Book a call"}
+    {"Get your growth plan"}
   </InternalLink>
   {"\n"}
 </header>
 {"\n"}
+<svg className="hl" id="hl" aria-hidden="true">
+  <path id="hlPath"></path>
+  <g id="hlTip">
+    <circle r="38" fill="#BC412B"></circle>
+    <circle r="25" fill="#F6F2EB"></circle>
+    <circle r="12" fill="#BC412B"></circle>
+  </g>
+</svg>
 <section id="home-hero" className="hero" aria-label="OBZAC">
-  {"\n  "}
   <div className="h-line" aria-hidden="true"></div>
-  {"\n\n  "}
-  <h1 className="h-title" aria-label="Helping our partners build bold brands that grow faster.">
-    {"\n    "}
+  <div className="h-in">
+  <h1 className="h-title" aria-label="Helping you build brands that grow">
     <span className="ln" aria-hidden="true">
-      <span className="w w-i">
-        {"Helping"}
-      </span>
-      {" "}
-      <span className="w w-x rv">
-        {"our"}
-      </span>
-      {" "}
-      <span className="w w-x rv">
-        {"partners"}
-      </span>
-    </span>
-    {"\n    "}
+      <span className="w w-i">{"Helping"}</span>{" "}
+      <span className="w w-x rv">{"you"}</span>{" "}
+      <span className="w w-x rv">{"build"}</span>
+    </span>{" "}
     <span className="ln" aria-hidden="true">
-      <span className="w w-x rv">
-        {"build"}
-      </span>
-      {" "}
-      <span className="w w-x rv">
-        {"bold"}
-      </span>
-      {" "}
-      <span className="w w-i">
-        {"brands"}
-      </span>
+      <span className="w w-i">{"brands"}</span>{" "}
+      <span className="w w-x rv">{"that"}</span>{" "}
+      <span className="w w-i">{"grow"}<span className="pd">{"."}</span></span>
     </span>
-    {"\n    "}
-    <span className="ln" aria-hidden="true">
-      <span className="w w-x rv">
-        {"that"}
-      </span>
-      {" "}
-      <span className="w w-i">
-        {"grow"}
-        <span className="pd">
-          {"."}
-        </span>
-      </span>
-      {" "}
-      <span className="w w-x rv">
-        {"faster."}
-      </span>
-    </span>
-    {"\n  "}
   </h1>
-  {"\n  "}
   <p className="h-sub rv">
     <svg className="rv" viewBox="0 0 56 16" aria-hidden="true">
       <path d="M3 9c5-8 9-8 13 0s9 8 14 0 9-8 13 0" fill="none" stroke="#BC412B" strokeWidth="3.2" strokeLinecap="round"></path>
     </svg>
-    <span>
-      {"For D2C brands, startups and enterprises."}
-    </span>
+    <span>{"One senior team, from the first idea to the final number."}</span>
     <svg className="rv" viewBox="0 0 56 16" aria-hidden="true">
       <path d="M3 9c5-8 9-8 13 0s9 8 14 0 9-8 13 0" fill="none" stroke="#BC412B" strokeWidth="3.2" strokeLinecap="round"></path>
     </svg>
   </p>
-  {"\n  "}
-  <a className="btn p h-btn rv" href="#contact">
-    {"Book a call"}
+  <a className="btn p h-btn rv" href="#services" onClick={scrollToServices}>
+    {"Explore the growth engine"}
+    <svg className="h-btn-ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2v11M3 8.5l5 5 5-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
   </a>
-  {"\n\n  "}
-  <div className="h-peek rv">
-    {"\n    "}
-    <p>
-      {"A growth-led brand and marketing partner, built for speed."}
-    </p>
-    {"\n    "}
-    <div className="sc" role="img" aria-label="Preview of selected work (placeholder artwork)">
-      {"\n      "}
-      <svg className="sc-s" viewBox="0 0 520 390" preserveAspectRatio="xMidYMid slice" style={{ "zIndex": "1" }}>
-        <rect width="520" height="390" fill="#F6F2EB"></rect>
-        <circle cx="260" cy="195" r="130" fill="#BC412B"></circle>
-        <circle cx="260" cy="195" r="84" fill="#F6F2EB"></circle>
-        <circle cx="260" cy="195" r="42" fill="#BC412B"></circle>
-      </svg>
-      {"\n      "}
-      <svg className="sc-s" viewBox="0 0 520 390" preserveAspectRatio="xMidYMid slice">
-        <rect width="520" height="390" fill="#BC412B"></rect>
-        <g fill="#F6F2EB">
-          <rect x="90" y="250" width="56" height="90" rx="6"></rect>
-          <rect x="170" y="205" width="56" height="135" rx="6"></rect>
-          <rect x="250" y="160" width="56" height="180" rx="6"></rect>
-          <rect x="330" y="110" width="56" height="230" rx="6"></rect>
-        </g>
-        <path d="M80 230L200 180 280 140 410 70" fill="none" stroke="#E8B04A" strokeWidth="10" strokeLinecap="round" strokeLinejoin="round"></path>
-      </svg>
-      {"\n      "}
-      <svg className="sc-s" viewBox="0 0 520 390" preserveAspectRatio="xMidYMid slice">
-        <rect width="520" height="390" fill="#6E4712"></rect>
-        <g fill="none" stroke="#F6F2EB" strokeWidth="16">
-          <circle cx="260" cy="195" r="150" strokeOpacity=".18"></circle>
-          <circle cx="260" cy="195" r="108" strokeOpacity=".38"></circle>
-          <circle cx="260" cy="195" r="66" strokeOpacity=".7"></circle>
-        </g>
-        <circle cx="260" cy="195" r="26" fill="#BC412B"></circle>
-      </svg>
-      {"\n      "}
-      <svg className="sc-s" viewBox="0 0 520 390" preserveAspectRatio="xMidYMid slice">
-        <rect width="520" height="390" fill="#F6F2EB"></rect>
-        <g transform="rotate(-8 200 200)">
-          <rect x="120" y="70" width="140" height="260" rx="22" fill="#BC412B"></rect>
-          <circle cx="190" cy="150" r="30" fill="#F6F2EB"></circle>
-          <rect x="146" y="214" width="88" height="12" rx="6" fill="#F6F2EB"></rect>
-          <rect x="146" y="240" width="60" height="12" rx="6" fill="#F6F2EB" fillOpacity=".6"></rect>
-        </g>
-        <g transform="rotate(7 340 200)">
-          <rect x="270" y="90" width="140" height="260" rx="22" fill="#6E4712"></rect>
-          <circle cx="340" cy="170" r="30" fill="#E8B04A"></circle>
-          <rect x="296" y="234" width="88" height="12" rx="6" fill="#F6F2EB"></rect>
-          <rect x="296" y="260" width="60" height="12" rx="6" fill="#F6F2EB" fillOpacity=".6"></rect>
-        </g>
-      </svg>
-      {"\n    "}
-    </div>
-    {"\n  "}
   </div>
-  {"\n"}
 </section>
 {"\n\n"}
-<section className="proof" aria-label="Brands we work with">
-  {"\n  "}
-  <p className="proof-cap">
-    {"Trusted by brands that want to grow faster"}
-  </p>
-  {"\n  "}
-  <div className="proof-vp">
-    {"\n    "}
-    <div className="proof-track">
-      {"\n      "}
-      <ul className="proof-list">
-        {"\n        "}
-        <li>
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <circle cx="12" cy="12" r="10"></circle>
-          </svg>
-          {"Client logo"}
-        </li>
-        {"\n        "}
-        <li>
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M12 3l10 18H2z"></path>
-          </svg>
-          {"Client logo"}
-        </li>
-        {"\n        "}
-        <li>
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <rect x="4" y="4" width="16" height="16" rx="3"></rect>
-          </svg>
-          {"Client logo"}
-        </li>
-        {"\n        "}
-        <li>
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <circle className="st" cx="12" cy="12" r="9"></circle>
-          </svg>
-          {"Client logo"}
-        </li>
-        {"\n        "}
-        <li>
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M2 17a10 10 0 0 1 20 0z"></path>
-          </svg>
-          {"Client logo"}
-        </li>
-        {"\n        "}
-        <li>
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M9 2h6v7h7v6h-7v7H9v-7H2V9h7z"></path>
-          </svg>
-          {"Client logo"}
-        </li>
-        {"\n        "}
-        <li>
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M12 1l11 11-11 11L1 12z"></path>
-          </svg>
-          {"Client logo"}
-        </li>
-        {"\n        "}
-        <li>
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <circle cx="7" cy="12" r="5"></circle>
-            <circle cx="18" cy="12" r="4"></circle>
-          </svg>
-          {"Client logo"}
-        </li>
-        {"\n      "}
-      </ul>
-      {"\n    "}
-    </div>
-    {"\n  "}
+<section className="proof" aria-labelledby="proofH">
+  <div className="proof-head">
+    <p className="kick proof-kick">{"Our partners"}</p>
+    <h2 className="proof-cap" id="proofH">{"Growing side by side with brands that refuse to stand still."}</h2>
   </div>
-  {"\n"}
+  <div className="proof-vp pr-a">
+    <div className="proof-track">
+      <ul className="proof-list">
+        <li className="bl f-serif" style={{ "--c": "#2F7D4F", "--c2": "#F3E9C6" }}><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3C9 9 6 14 6 19a10 10 0 0 0 20 0c0-5-3-10-10-16z" fill="var(--c)"/><path d="M16 12v15" stroke="var(--c2)" strokeWidth="2.4" strokeLinecap="round"/></svg><span>Kaveri Organics</span></li>
+        <li className="bl f-wide" style={{ "--c": "#1F4E8C", "--c2": "#7FB2E5" }}><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 2l5 14h-10z" fill="var(--c)"/><path d="M11 16h10l-5 14z" fill="var(--c2)"/></svg><span>NORTHWIND</span></li>
+        <li className="bl f-round" style={{ "--c": "#F2A33A", "--c2": "#FFE3A8" }}><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="13" fill="var(--c)"/><circle cx="21" cy="12" r="7" fill="var(--c2)"/></svg><span>lumora</span></li>
+        <li className="bl f-thin" style={{ "--c": "#C76B8A", "--c2": "#E9B7C7" }}><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="5" y="5" width="22" height="22" rx="11" fill="none" stroke="var(--c)" strokeWidth="3"/><circle cx="16" cy="16" r="4" fill="var(--c2)"/></svg><span>Solace Skin</span></li>
+        <li className="bl f-heavy" style={{ "--c": "#7A4A24", "--c2": "#D9A066" }}><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="4" y="8" width="20" height="18" rx="3" fill="var(--c)"/><path d="M24 12h2a4 4 0 0 1 0 8h-2" fill="none" stroke="var(--c)" strokeWidth="3"/><path d="M9 4c0 2 2 2 2 4M15 4c0 2 2 2 2 4" stroke="var(--c2)" strokeWidth="2" strokeLinecap="round"/></svg><span>BREWBOX</span></li>
+        <li aria-hidden="true" className="bl f-serif" style={{ "--c": "#2F7D4F", "--c2": "#F3E9C6" }}><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3C9 9 6 14 6 19a10 10 0 0 0 20 0c0-5-3-10-10-16z" fill="var(--c)"/><path d="M16 12v15" stroke="var(--c2)" strokeWidth="2.4" strokeLinecap="round"/></svg><span>Kaveri Organics</span></li>
+        <li aria-hidden="true" className="bl f-wide" style={{ "--c": "#1F4E8C", "--c2": "#7FB2E5" }}><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 2l5 14h-10z" fill="var(--c)"/><path d="M11 16h10l-5 14z" fill="var(--c2)"/></svg><span>NORTHWIND</span></li>
+        <li aria-hidden="true" className="bl f-round" style={{ "--c": "#F2A33A", "--c2": "#FFE3A8" }}><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="13" fill="var(--c)"/><circle cx="21" cy="12" r="7" fill="var(--c2)"/></svg><span>lumora</span></li>
+        <li aria-hidden="true" className="bl f-thin" style={{ "--c": "#C76B8A", "--c2": "#E9B7C7" }}><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="5" y="5" width="22" height="22" rx="11" fill="none" stroke="var(--c)" strokeWidth="3"/><circle cx="16" cy="16" r="4" fill="var(--c2)"/></svg><span>Solace Skin</span></li>
+        <li aria-hidden="true" className="bl f-heavy" style={{ "--c": "#7A4A24", "--c2": "#D9A066" }}><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="4" y="8" width="20" height="18" rx="3" fill="var(--c)"/><path d="M24 12h2a4 4 0 0 1 0 8h-2" fill="none" stroke="var(--c)" strokeWidth="3"/><path d="M9 4c0 2 2 2 2 4M15 4c0 2 2 2 2 4" stroke="var(--c2)" strokeWidth="2" strokeLinecap="round"/></svg><span>BREWBOX</span></li>
+      </ul>
+    </div>
+  </div>
+  <div className="proof-vp pr-b">
+    <div className="proof-track">
+      <ul className="proof-list">
+        <li className="bl f-mono" style={{ "--c": "#5B3FD6", "--c2": "#B9AAF5" }}><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M3 6h8l5 14 5-14h8L19 28h-6z" fill="var(--c)"/></svg><span>Vantage/Labs</span></li>
+        <li className="bl f-serif-i" style={{ "--c": "#B5562D", "--c2": "#E8B04A" }}><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M2 26L12 10l6 9 4-5 8 12z" fill="var(--c)"/><circle cx="23" cy="8" r="3.5" fill="var(--c2)"/></svg><span>Terra&Co.</span></li>
+        <li className="bl f-round" style={{ "--c": "#E2445C", "--c2": "#FF9BA8" }}><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="4" y="18" width="7" height="7" fill="var(--c)"/><rect x="12.5" y="11" width="7" height="14" fill="var(--c2)"/><rect x="21" y="4" width="7" height="21" fill="var(--c)"/></svg><span>pixelpeak</span></li>
+        <li className="bl f-thin" style={{ "--c": "#D39A0B", "--c2": "#7A4A0B" }}><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M4 15L16 5l12 10v12H4z" fill="var(--c)"/><rect x="13" y="18" width="6" height="9" rx="3" fill="var(--c2)"/></svg><span>Haldi House</span></li>
+        <li className="bl f-heavy" style={{ "--c": "#1C8C8C", "--c2": "#8FD3CF" }}><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M5 17a11 11 0 0 1 22 0z" fill="var(--c)"/><path d="M16 17v8a3 3 0 0 1-6 0" fill="none" stroke="var(--c2)" strokeWidth="2.6" strokeLinecap="round"/></svg><span>Monsoon Mart</span></li>
+        <li aria-hidden="true" className="bl f-mono" style={{ "--c": "#5B3FD6", "--c2": "#B9AAF5" }}><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M3 6h8l5 14 5-14h8L19 28h-6z" fill="var(--c)"/></svg><span>Vantage/Labs</span></li>
+        <li aria-hidden="true" className="bl f-serif-i" style={{ "--c": "#B5562D", "--c2": "#E8B04A" }}><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M2 26L12 10l6 9 4-5 8 12z" fill="var(--c)"/><circle cx="23" cy="8" r="3.5" fill="var(--c2)"/></svg><span>Terra&Co.</span></li>
+        <li aria-hidden="true" className="bl f-round" style={{ "--c": "#E2445C", "--c2": "#FF9BA8" }}><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="4" y="18" width="7" height="7" fill="var(--c)"/><rect x="12.5" y="11" width="7" height="14" fill="var(--c2)"/><rect x="21" y="4" width="7" height="21" fill="var(--c)"/></svg><span>pixelpeak</span></li>
+        <li aria-hidden="true" className="bl f-thin" style={{ "--c": "#D39A0B", "--c2": "#7A4A0B" }}><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M4 15L16 5l12 10v12H4z" fill="var(--c)"/><rect x="13" y="18" width="6" height="9" rx="3" fill="var(--c2)"/></svg><span>Haldi House</span></li>
+        <li aria-hidden="true" className="bl f-heavy" style={{ "--c": "#1C8C8C", "--c2": "#8FD3CF" }}><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M5 17a11 11 0 0 1 22 0z" fill="var(--c)"/><path d="M16 17v8a3 3 0 0 1-6 0" fill="none" stroke="var(--c2)" strokeWidth="2.6" strokeLinecap="round"/></svg><span>Monsoon Mart</span></li>
+      </ul>
+    </div>
+  </div>
 </section>
 {"\n\n"}
 <section id="work" className="reel" aria-label="Selected work">
@@ -370,93 +253,7 @@ export default function HomePage() {
   {"\n"}
 </section>
 {"\n\n\n"}
-<section id="results" className="t-sec" aria-label="Results">
-  {"\n  "}
-  <div className="t-in">
-    <p className="kick">
-      {"Results"}
-    </p>
-    <div className="stats-g">
-      {"\n"}
-      <div>
-        <div className="st-logo">
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <circle cx="12" cy="12" r="10"></circle>
-          </svg>
-          {"Client logo"}
-        </div>
-        <p className="st-n" data-to="3.2" data-dec="1" data-pre="" data-suf="X">
-          {"3.2X"}
-        </p>
-        <p className="st-c">
-          {"Return on ad spend"}
-        </p>
-      </div>
-      {"\n"}
-      <div>
-        <div className="st-logo">
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M12 3l10 18H2z"></path>
-          </svg>
-          {"Client logo"}
-        </div>
-        <p className="st-n" data-to="120" data-dec="0" data-pre="" data-suf="+">
-          {"120+"}
-        </p>
-        <p className="st-c">
-          {"Brands launched"}
-        </p>
-      </div>
-      {"\n"}
-      <div>
-        <div className="st-logo">
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <rect x="4" y="4" width="16" height="16" rx="3"></rect>
-          </svg>
-          {"Client logo"}
-        </div>
-        <p className="st-n" data-to="48" data-dec="0" data-pre="" data-suf="h">
-          {"48h"}
-        </p>
-        <p className="st-c">
-          {"From brief to first concepts"}
-        </p>
-      </div>
-      {"\n"}
-      <div>
-        <div className="st-logo">
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M12 1l11 11-11 11L1 12z"></path>
-          </svg>
-          {"Client logo"}
-        </div>
-        <p className="st-n" data-to="65" data-dec="0" data-pre="" data-suf="%">
-          {"65%"}
-        </p>
-        <p className="st-c">
-          {"Lift in qualified leads"}
-        </p>
-      </div>
-      {"\n"}
-      <div>
-        <div className="st-logo">
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M2 17a10 10 0 0 1 20 0z"></path>
-          </svg>
-          {"Client logo"}
-        </div>
-        <p className="st-n" data-to="2" data-dec="0" data-pre="$" data-suf="m">
-          {"$2m"}
-        </p>
-        <p className="st-c">
-          {"Revenue influenced"}
-        </p>
-      </div>
-      {"\n  "}
-    </div>
-  </div>
-  {"\n"}
-</section>
+
 {"\n\n"}
 <section id="services" aria-label="Services">
   {"\n  "}
@@ -474,12 +271,12 @@ export default function HomePage() {
   <div className="svc-list" id="svcl"></div>
   {"\n  "}
   <div className="svc-cta">
-    <a className="btn p" href="#contact">
-      {"Book a call "}
+    <InternalLink className="btn p" href="contact.html#brief">
+      {"Get your growth plan "}
       <span aria-hidden="true">
         {"→"}
       </span>
-    </a>
+    </InternalLink>
     <InternalLink className="btn g" href="work.html">
       {"See our work"}
     </InternalLink>
@@ -1104,15 +901,12 @@ export default function HomePage() {
       </h3>
       {"\n      "}
       <div className="btns">
-        <a className="btn p" href="#contact">
-          {"Book a call "}
+        <InternalLink className="btn p" href="contact.html#brief">
+          {"Get your growth plan "}
           <span aria-hidden="true">
             {"→"}
           </span>
-        </a>
-        <a className="btn g" href="#contact">
-          {"Message us on WhatsApp"}
-        </a>
+        </InternalLink>
       </div>
       {"\n      "}
       <div className="cue2">
@@ -1139,36 +933,9 @@ export default function HomePage() {
   {"\n"}
 </section>
 {"\n\n"}
-<footer className="site-ft" id="contact">
-  {"\n  "}
+<footer className="site-ft ft-merge" id="contact">
+  <canvas className="ft-pulse" id="ftPulse" aria-hidden="true"></canvas>
   <div className="ft-in">
-    {"\n    "}
-    <div className="ft-cta">
-      {"\n      "}
-      <p className="ft-kick">
-        {"Let's talk"}
-      </p>
-      {"\n      "}
-      <h2>
-        {"Ready to grow "}
-        <em>
-          {"faster?"}
-        </em>
-      </h2>
-      {"\n      "}
-      <div className="ft-btns">
-        <InternalLink className="btn p" href="contact.html#brief">
-          {"Book a call "}
-          <span aria-hidden="true">
-            {"→"}
-          </span>
-        </InternalLink>
-        <a className="btn ft-ghost" href="https://wa.me/000000000000">
-          {"Message us on WhatsApp"}
-        </a>
-      </div>
-      {"\n    "}
-    </div>
     {"\n    "}
     <div className="ft-cols">
       {"\n      "}
@@ -1195,6 +962,11 @@ export default function HomePage() {
           <li>
             <InternalLink href="services.html">
               {"Services"}
+            </InternalLink>
+          </li>
+          <li>
+            <InternalLink href="careers.html">
+              {"Careers"}
             </InternalLink>
           </li>
           <li>
