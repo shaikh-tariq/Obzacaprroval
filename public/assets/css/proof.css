@@ -1,18 +1,45 @@
-/* ===== Proof strip: client logos drifting left to right, endless loop ===== */
-.proof{background:var(--page);color:var(--ink);padding:clamp(28px,5vh,52px) 0;border-top:1px solid rgba(43,26,10,.12);border-bottom:1px solid rgba(43,26,10,.12)}
-.proof-cap{margin:0 0 clamp(18px,3vh,30px);padding:0 24px;text-align:center;font:500 clamp(14px,1.1vw,17px)/1.3 var(--body);color:rgba(43,26,10,.65)}
-.proof-vp{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent);mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent)}
-.proof-track{display:flex;width:max-content;animation:proof-run 40s linear infinite}
+/* ===== Brand strip: partner logos drifting in an endless loop.
+   Logos rest in black and white and take their own colours on hover/focus.
+   Each logo sets --c (main colour) and --c2 (second colour) inline in HomePage.jsx. ===== */
+.proof{background:var(--page);color:var(--ink);padding:clamp(72px,11vh,128px) 0 clamp(64px,10vh,112px)}
+.proof-head{max-width:1240px;margin:0 auto clamp(36px,6vh,64px);padding:0 clamp(20px,4vw,56px);display:grid;justify-items:center;text-align:center}
+.proof-kick{margin-bottom:14px}
+.proof-cap{margin:0;max-width:24ch;font:600 clamp(26px,3.2vw,48px)/1.08 var(--display);letter-spacing:-.03em;color:var(--ink);text-wrap:balance}
+.proof-vp{overflow:hidden;padding-block:14px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.proof-track{display:flex;width:max-content;animation:proof-run 46s linear infinite}
 .proof-vp:hover .proof-track,.proof-vp:focus-within .proof-track{animation-play-state:paused}
-.proof-list{display:flex;flex:none;margin:0;padding:0 clamp(40px,6vw,96px) 0 0;list-style:none;gap:clamp(40px,6vw,96px)}
-.proof-list li{display:flex;align-items:center;gap:12px;color:rgba(43,26,10,.55);white-space:nowrap;font:600 clamp(18px,1.7vw,26px)/1 var(--display);letter-spacing:-.03em;transition:color .2s}
-.proof-list li:hover{color:var(--ink)}
-.proof-list svg{width:1.3em;height:1.3em;fill:currentColor;flex:none}
-.proof-list .st{fill:none;stroke:currentColor;stroke-width:3}
+.proof-list{display:flex;flex:none;align-items:center;margin:0;padding:0 clamp(48px,6vw,96px) 0 0;list-style:none;gap:clamp(48px,6vw,96px)}
+.bl{display:flex;align-items:center;gap:12px;white-space:nowrap;color:var(--ink);font:600 clamp(20px,1.9vw,28px)/1 var(--display);letter-spacing:-.02em;
+  filter:grayscale(1) contrast(1.1);opacity:.55;transition:filter .45s ease,opacity .45s ease,color .45s ease,transform .45s cubic-bezier(.2,.7,.2,1);cursor:default}
+.bl svg{width:1.35em;height:1.35em;flex:none;overflow:visible}
+.bl:hover,.bl:focus-within{filter:none;opacity:1;color:var(--c);transform:translateY(-2px)}
+/* each wordmark gets its own type treatment so the strip reads like real, different brands */
+.f-serif{font:500 clamp(21px,2vw,30px)/1 Georgia,'Times New Roman',serif;letter-spacing:-.01em}
+.f-serif-i{font:italic 600 clamp(21px,2vw,30px)/1 Georgia,'Times New Roman',serif;letter-spacing:-.01em}
+.f-wide{font:700 clamp(16px,1.5vw,22px)/1 var(--display);letter-spacing:.22em}
+.f-round{font:700 clamp(22px,2.1vw,31px)/1 var(--body);letter-spacing:-.045em}
+.f-thin{font:400 clamp(20px,1.9vw,28px)/1 var(--body);letter-spacing:.04em}
+.f-heavy{font:700 clamp(20px,1.9vw,28px)/1 var(--display);letter-spacing:-.04em;text-transform:uppercase}
+.f-mono{font:500 clamp(17px,1.6vw,23px)/1 var(--mono);letter-spacing:-.02em}
 @keyframes proof-run{from{transform:translateX(-50%)}to{transform:translateX(0)}}
+@media (hover:none){.bl{opacity:.7}}
 @media (prefers-reduced-motion:reduce){
   .proof-track{animation:none;width:auto;justify-content:center;flex-wrap:wrap}
-  .proof-list{flex-wrap:wrap;justify-content:center;padding:0 24px;row-gap:20px}
+  .proof-list{flex-wrap:wrap;justify-content:center;padding:0 24px;row-gap:28px}
   .proof-list[aria-hidden="true"]{display:none}
   .proof-vp{-webkit-mask-image:none;mask-image:none}
 }
+
+/* two rows, larger logos; the second row runs the other way */
+.proof-vp+.proof-vp{margin-top:clamp(8px,2vh,20px)}
+.proof-vp{padding-block:clamp(14px,2.2vh,24px)}
+.pr-b .proof-track{animation-direction:reverse;animation-duration:52s}
+.proof-list{gap:clamp(56px,7vw,120px);padding-right:clamp(56px,7vw,120px)}
+.bl{font-size:clamp(24px,2.6vw,40px);gap:14px}
+.bl svg{width:1.3em;height:1.3em}
+.f-serif,.f-serif-i{font-size:clamp(26px,2.8vw,42px)}
+.f-wide{font-size:clamp(19px,2vw,30px)}
+.f-round{font-size:clamp(27px,2.9vw,43px)}
+.f-thin,.f-heavy{font-size:clamp(24px,2.6vw,40px)}
+.f-mono{font-size:clamp(20px,2.2vw,32px)}
+@media (prefers-reduced-motion:reduce){.proof-list li[aria-hidden="true"]{display:none}}

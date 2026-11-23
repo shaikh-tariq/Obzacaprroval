@@ -74,3 +74,14 @@
   .cnt-blob{width:34vw;height:22vw}
 }
 @media (prefers-reduced-motion:reduce){ .cnt{height:auto} .cnt-st{position:relative;height:70vh} .cs-art svg{transition:none} .pr-g li::after{transform:scaleX(1);transition:none} }
+
+/* ===== 2026-11 spacing pass: one vertical rhythm for every homepage content section ===== */
+:root{--sec-y:clamp(88px,12vw,168px);--sec-x:clamp(20px,4vw,56px)}
+.t-sec{padding:var(--sec-y) var(--sec-x)}
+#case-studies{padding-top:clamp(96px,13vw,176px)}
+#testimonials{padding-bottom:var(--sec-y)}
+.t-h{margin-bottom:clamp(40px,6vw,80px)}
+@media (max-width:600px){
+  :root{--sec-y:72px}
+  #why,#testimonials{padding-block:var(--sec-y)}
+}

@@ -29,3 +29,9 @@
 @media (max-width:899px){.svi{--fs:clamp(38px,9vw,60px)}}
 @media (max-width:600px){#services{padding-top:36px;padding-bottom:40px}}
 @media (prefers-reduced-motion:reduce){.svi,.card,.card .c,.more{transition-duration:.01s!important;transition-delay:0s!important}}
+
+/* ===== 2026-11 spacing pass ===== */
+#services{padding:var(--sec-y,clamp(88px,12vw,168px)) var(--sec-x,16px);scroll-margin-top:calc(var(--hd-h,72px) - 1px)}
+.svc-head{margin-bottom:clamp(32px,5vh,56px)}
+.svc-cta{margin-top:clamp(40px,6vh,64px)}
+@media (max-width:600px){#services{padding-block:72px}}

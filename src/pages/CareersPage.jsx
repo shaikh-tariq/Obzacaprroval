@@ -102,7 +102,7 @@ export default function CareersPage() {
         </nav>
 
         <InternalLink className="btn p hd-cta" href="contact.html#brief">
-          Book a call
+          Get your growth plan
         </InternalLink>
       </header>
 

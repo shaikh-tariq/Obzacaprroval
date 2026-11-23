@@ -84,7 +84,7 @@ export default function AboutPage() {
         </nav>
         {"\n  "}
         <InternalLink className="btn p hd-cta" href="contact.html#brief">
-          {"Book a call"}
+          {"Get your growth plan"}
         </InternalLink>
         {"\n"}
       </header>
@@ -374,183 +374,7 @@ export default function AboutPage() {
           {"\n"}
         </section>
         {"\n\n"}
-        <section className="cc" aria-label="Client quotes">
-          {"\n  "}
-          <h2 data-rv="">
-            {"Client "}
-            <em>
-              {"Confessions"}
-            </em>
-          </h2>
-          {"\n  "}
-          <div className="cc-t">
-            <div className="cc-set">
-              <div className="qc r" style={{ "--r": "-4deg", "--y": "0px" }}>
-                <q>
-                  {"They understood our brand fast and the launch results spoke for themselves."}
-                </q>
-                <small>
-                  {"Client name"}
-                  <br />
-                  {"Role, Brand name"}
-                </small>
-              </div>
-              <div className="qc c" style={{ "--r": "3deg", "--y": "40px" }}>
-                <q>
-                  {"Quick, clear and honest about numbers. It felt like an in-house team."}
-                </q>
-                <small>
-                  {"Client name"}
-                  <br />
-                  {"Role, Brand name"}
-                </small>
-              </div>
-              <div className="qc r" style={{ "--r": "-2deg", "--y": "-20px" }}>
-                <q>
-                  {"Brand and performance finally worked together. We saw the difference within weeks."}
-                </q>
-                <small>
-                  {"Client name"}
-                  <br />
-                  {"Role, Brand name"}
-                </small>
-              </div>
-              <div className="qc c" style={{ "--r": "5deg", "--y": "60px" }}>
-                <q>
-                  {"The most thoughtful, collaborative partner we have worked with."}
-                </q>
-                <small>
-                  {"Client name"}
-                  <br />
-                  {"Role, Brand name"}
-                </small>
-              </div>
-              <div className="qc r" style={{ "--r": "-3deg", "--y": "10px" }}>
-                <q>
-                  {"Our website and campaigns finally look and perform like the brand we imagined."}
-                </q>
-                <small>
-                  {"Client name"}
-                  <br />
-                  {"Role, Brand name"}
-                </small>
-              </div>
-              <div className="qc c" style={{ "--r": "2deg", "--y": "-30px" }}>
-                <q>
-                  {"They treated our product like their own and it showed in every detail."}
-                </q>
-                <small>
-                  {"Client name"}
-                  <br />
-                  {"Role, Brand name"}
-                </small>
-              </div>
-              <div className="qc r" style={{ "--r": "-5deg", "--y": "50px" }}>
-                <q>
-                  {"Sales moved the month we launched. We would hire them again tomorrow."}
-                </q>
-                <small>
-                  {"Client name"}
-                  <br />
-                  {"Role, Brand name"}
-                </small>
-              </div>
-              <div className="qc c" style={{ "--r": "4deg", "--y": "0px" }}>
-                <q>
-                  {"Creative that looks great and a team that actually moves the numbers."}
-                </q>
-                <small>
-                  {"Client name"}
-                  <br />
-                  {"Role, Brand name"}
-                </small>
-              </div>
-            </div>
-            <div className="cc-set" aria-hidden="true">
-              <div className="qc r" style={{ "--r": "-4deg", "--y": "0px" }}>
-                <q>
-                  {"They understood our brand fast and the launch results spoke for themselves."}
-                </q>
-                <small>
-                  {"Client name"}
-                  <br />
-                  {"Role, Brand name"}
-                </small>
-              </div>
-              <div className="qc c" style={{ "--r": "3deg", "--y": "40px" }}>
-                <q>
-                  {"Quick, clear and honest about numbers. It felt like an in-house team."}
-                </q>
-                <small>
-                  {"Client name"}
-                  <br />
-                  {"Role, Brand name"}
-                </small>
-              </div>
-              <div className="qc r" style={{ "--r": "-2deg", "--y": "-20px" }}>
-                <q>
-                  {"Brand and performance finally worked together. We saw the difference within weeks."}
-                </q>
-                <small>
-                  {"Client name"}
-                  <br />
-                  {"Role, Brand name"}
-                </small>
-              </div>
-              <div className="qc c" style={{ "--r": "5deg", "--y": "60px" }}>
-                <q>
-                  {"The most thoughtful, collaborative partner we have worked with."}
-                </q>
-                <small>
-                  {"Client name"}
-                  <br />
-                  {"Role, Brand name"}
-                </small>
-              </div>
-              <div className="qc r" style={{ "--r": "-3deg", "--y": "10px" }}>
-                <q>
-                  {"Our website and campaigns finally look and perform like the brand we imagined."}
-                </q>
-                <small>
-                  {"Client name"}
-                  <br />
-                  {"Role, Brand name"}
-                </small>
-              </div>
-              <div className="qc c" style={{ "--r": "2deg", "--y": "-30px" }}>
-                <q>
-                  {"They treated our product like their own and it showed in every detail."}
-                </q>
-                <small>
-                  {"Client name"}
-                  <br />
-                  {"Role, Brand name"}
-                </small>
-              </div>
-              <div className="qc r" style={{ "--r": "-5deg", "--y": "50px" }}>
-                <q>
-                  {"Sales moved the month we launched. We would hire them again tomorrow."}
-                </q>
-                <small>
-                  {"Client name"}
-                  <br />
-                  {"Role, Brand name"}
-                </small>
-              </div>
-              <div className="qc c" style={{ "--r": "4deg", "--y": "0px" }}>
-                <q>
-                  {"Creative that looks great and a team that actually moves the numbers."}
-                </q>
-                <small>
-                  {"Client name"}
-                  <br />
-                  {"Role, Brand name"}
-                </small>
-              </div>
-            </div>
-          </div>
-          {"\n"}
-        </section>
+        
         {"\n\n"}
         <section className="ab-cl" aria-label="Get in touch">
           {"\n  "}
@@ -590,9 +414,6 @@ export default function AboutPage() {
                   {"→"}
                 </span>
               </InternalLink>
-              <a className="btn ft-ghost" href="https://wa.me/000000000000">
-                {"Message us on WhatsApp"}
-              </a>
             </div>
             {"\n    "}
           </div>

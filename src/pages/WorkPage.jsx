@@ -83,7 +83,7 @@ export default function WorkPage() {
   </nav>
   {"\n  "}
   <InternalLink className="btn p hd-cta" href="contact.html#brief">
-    {"Book a call"}
+    {"Get your growth plan"}
   </InternalLink>
   {"\n"}
 </header>
@@ -281,9 +281,6 @@ export default function WorkPage() {
             {"→"}
           </span>
         </InternalLink>
-        <a className="btn ft-ghost" href="https://wa.me/000000000000">
-          {"Message us on WhatsApp"}
-        </a>
       </div>
       {"\n    "}
     </div>

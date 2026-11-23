@@ -91,3 +91,10 @@
   .hud{bottom:max(14px,env(safe-area-inset-bottom,14px));left:5vw;right:5vw;font-size:10px}
   .hud .bar{max-width:110px}
 }
+
+/* ===== 2026-11: the story's closing call to action runs straight into the footer as one section.
+   The pulsing rings are drawn on #ftPulse by story.js from the same centre and clock as the stage. ===== */
+.site-ft.ft-merge{overflow:hidden;isolation:isolate}
+.ft-pulse{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+.ft-merge .ft-in{position:relative;z-index:1;padding-top:clamp(120px,22vh,220px)}
+.ft-merge .ft-cols{border-top:none;padding-top:0}
